@@ -1,5 +1,5 @@
 import styles from "../../styles/user.module.scss";
-import React from "react";
+import React, {useEffect, useState} from "react";
 import MainContainer from "../../components/MainContainer";
 
 interface User {
@@ -7,6 +7,16 @@ interface User {
     name: string;
 }
 export default function Id({user}: { user: User }) {
+
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setLoading(false); // Set loading to false after component mounts
+    }, []);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <MainContainer keywords={user.name}>

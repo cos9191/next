@@ -1,11 +1,21 @@
 import Link from "next/link";
 import MainContainer from "../components/MainContainer";
+import {useEffect, useState} from "react";
 
 interface User {
     id: number;
     name: string;
 }
 const UserList = ({users}: {users: User[]}) => {
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setLoading(false); // Set loading to false after component mounts
+    }, []);
+
+    if (loading) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <MainContainer keywords={"Users list"}>
@@ -30,5 +40,6 @@ export async function getStaticProps() {
 
     return {
         props: {users},
+        revalidate: 3600,
     };
 }
