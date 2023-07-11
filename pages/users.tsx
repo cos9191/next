@@ -10,7 +10,9 @@ const UserList = ({users}: {users: User[]}) => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        setLoading(false); // Set loading to false after component mounts
+        setTimeout(() => {
+            setLoading(false);
+        }, 500)
     }, []);
 
     if (loading) {

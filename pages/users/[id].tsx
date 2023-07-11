@@ -11,7 +11,9 @@ export default function Id({user}: { user: User }) {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        setLoading(false); // Set loading to false after component mounts
+        setTimeout(() => {
+            setLoading(false);
+        }, 500)
     }, []);
 
     if (loading) {
